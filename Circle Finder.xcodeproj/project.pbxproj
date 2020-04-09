@@ -74,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9A0FD524365E2D0087F958 /* Circle Finder */,
+				AEAA01BE243E8E1100669D5E /* Credits.swift */,
 				AE9A0FD424365E2D0087F958 /* Products */,
 				A4E3E83C1EDC8C7ACB30B7AB /* Pods */,
 				BCFFAEDD8F76A2BAC7640662 /* Frameworks */,
@@ -108,7 +109,6 @@
 			children = (
 				AE9A0FDA24365E2D0087F958 /* WelcomeScreen.swift */,
 				AEAA01B9243E371C00669D5E /* CalculationViewController.swift */,
-				AEAA01BE243E8E1100669D5E /* Credits.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
