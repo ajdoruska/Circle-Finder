@@ -1,0 +1,6 @@
+framework module Pods_Circle_Finder {
+  umbrella header "Pods-Circle Finder-umbrella.h"
+
+  export *
+  module * { export * }
+}
