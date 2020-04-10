@@ -12,6 +12,7 @@ class WelcomeScreen: UIViewController {
     
     
     @IBOutlet weak var appTitleLabel: CLTypingLabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

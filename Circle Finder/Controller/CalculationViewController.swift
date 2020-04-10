@@ -6,7 +6,7 @@ class CalculationViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     
     //MARK: - Passed the results from the Calculations completed in CalculationLogistics
-    var result: Array <Any>? //array of the answers to be passed
+    var result: Array <String>? //array of the answers to be passed
     
     //MARK: - Global Variables to be passed into Calculation Logistics
     var selectedMeasurement: String? // diameter, radius, circumference
@@ -128,8 +128,35 @@ class CalculationViewController: UIViewController, UIPickerViewDataSource, UIPic
         if meetsGuidelines == true {
             //proceed with calculations
             result = CalculationLogistics().performCalculations(length: lengthmeasurement!, measurement: selectedMeasurement!)
+            
+            
+            
         }else {
             warningLabel.isHidden = false //warns user that form is not filled completely... try again!
         }
     }
+    
+    //MARK: - segue data handling
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResults" {
+            let destinationVC = segue.destination as! resultsViewController
+            
+             let answer = result?[0]
+                if answer != nil {
+                destinationVC.radiusLabel.text =  result?[0]
+                    print(answer!)
+            
+            }
+                else{
+                    print("failurrrrrreee")
+            }
+        }
+        
+    }
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        print("segue now moving")
+    }
+    
+    
 }

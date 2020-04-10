@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE1B8BEA243FDEA30048AF95 /* resultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B8BE9243FDEA30048AF95 /* resultsViewController.swift */; };
 		AE9A0FD724365E2D0087F958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A0FD624365E2D0087F958 /* AppDelegate.swift */; };
 		AE9A0FD924365E2D0087F958 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A0FD824365E2D0087F958 /* SceneDelegate.swift */; };
 		AE9A0FDB24365E2D0087F958 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A0FDA24365E2D0087F958 /* WelcomeScreen.swift */; };
@@ -25,6 +26,7 @@
 		1E897D6D9D514608B8984851 /* Pods_Circle_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Circle_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7292DC27487D5A30E8CC85C4 /* Pods_Circle_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Circle_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		824097270AEBFE60C862BB28 /* Pods-Circle Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Circle Finder.release.xcconfig"; path = "Target Support Files/Pods-Circle Finder/Pods-Circle Finder.release.xcconfig"; sourceTree = "<group>"; };
+		AE1B8BE9243FDEA30048AF95 /* resultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultsViewController.swift; sourceTree = "<group>"; };
 		AE9A0FD324365E2D0087F958 /* Circle Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Circle Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9A0FD624365E2D0087F958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE9A0FD824365E2D0087F958 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				AE9A0FDA24365E2D0087F958 /* WelcomeScreen.swift */,
 				AEAA01B9243E371C00669D5E /* CalculationViewController.swift */,
+				AE1B8BE9243FDEA30048AF95 /* resultsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				AEAA01BD243E3BC200669D5E /* CalculationLogistics.swift in Sources */,
 				AEAA01BA243E371C00669D5E /* CalculationViewController.swift in Sources */,
 				AE9A0FDB24365E2D0087F958 /* WelcomeScreen.swift in Sources */,
+				AE1B8BEA243FDEA30048AF95 /* resultsViewController.swift in Sources */,
 				AE9A0FD724365E2D0087F958 /* AppDelegate.swift in Sources */,
 				AEAA01BF243E8E1100669D5E /* Credits.swift in Sources */,
 				AE9A0FD924365E2D0087F958 /* SceneDelegate.swift in Sources */,

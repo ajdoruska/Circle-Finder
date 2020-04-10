@@ -16,7 +16,7 @@ struct CalculationLogistics {
     
     
     
-    func performCalculations(length: Double, measurement: String) -> Array<Any>{
+    func performCalculations(length: Double, measurement: String) -> Array<String>{
         
         let name = measurement
         switch name {
@@ -25,19 +25,23 @@ struct CalculationLogistics {
                 let diameter: Double = length / pi //circumference divided by pi = diameter
                 let radius: Double = diameter/2
                 let area: Double = pow(radius, 2) * pi
-                return [diameter, radius, circumference, area]
+                let answerArray = [diameter.description, radius.description, circumference.description, area.description]
+                return answerArray
             case "radius":
                 let radius: Double = length //radius is the given measurement
                 let diameter: Double = radius * 2
                 let circumference: Double = diameter * pi
                 let area: Double = pow(radius, 2) * pi
-                return [diameter, radius, circumference, area]
+                let answerArray = [diameter.description, radius.description, circumference.description, area.description]
+                return answerArray
             case "diameter":
                 let diameter: Double = length //given measurement
                 let circumference: Double = diameter * pi
                 let radius: Double = diameter/2
                 let area: Double = pow(radius, 2) * pi
-                return [diameter, radius, circumference, area]
+                
+                let answerArray = [diameter.description, radius.description, circumference.description, area.description]
+                return answerArray
             
             
             

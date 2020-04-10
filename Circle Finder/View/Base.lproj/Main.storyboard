@@ -10,12 +10,12 @@
         <!--WelcomeScreen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="WelcomeScreen" customClass="ViewController" customModule="Circle_Finder" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="BYZ-38-t0r" userLabel="WelcomeScreen" customClass="WelcomeScreen" customModule="Circle_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="CLTypingLabel" customModule="CLTypingLabel">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Circle Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-c4-wTk" customClass="CLTypingLabel" customModule="CLTypingLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Circle Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-c4-wTk" customClass="CLTypingLabel" customModule="Circle_Finder" customModuleProvider="target">
                                 <rect key="frame" x="77" y="251" width="261" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="76"/>
@@ -54,7 +54,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="a5S-2r-t5p"/>
                     <connections>
-                        <outlet property="appTitleLabel" destination="y3t-c4-wTk" id="7i1-F7-wNO"/>
+                        <outlet property="appTitleLabel" destination="y3t-c4-wTk" id="eW6-Iq-lDe"/>
                         <outlet property="startButtonIsRounded" destination="4mK-iz-lvo" id="5L7-SU-2N8"/>
                     </connections>
                 </viewController>
@@ -145,7 +145,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="calculateButtonPressed:" destination="h2i-Sl-OPH" eventType="touchUpInside" id="4Ti-1H-9Sh"/>
-                                    <segue destination="MFm-fK-Hsp" kind="show" id="Nm0-pW-caY"/>
+                                    <segue destination="MFm-fK-Hsp" kind="show" identifier="goToResults" id="guu-ah-QHG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="IIF-pN-eAh">
@@ -211,16 +211,16 @@
             </objects>
             <point key="canvasLocation" x="3321.739130434783" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Results View Controller-->
         <scene sceneID="1nl-HT-Mn0">
             <objects>
-                <viewController id="MFm-fK-Hsp" sceneMemberID="viewController">
+                <viewController id="MFm-fK-Hsp" customClass="resultsViewController" customModule="Circle_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hdk-he-S2i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvQ-dl-xan">
-                                <rect key="frame" x="100" y="151" width="137" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrR-kx-fRd">
+                                <rect key="frame" x="73" y="190" width="216" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -231,6 +231,9 @@
                         <viewLayoutGuide key="safeArea" id="hG7-zW-Fhi"/>
                     </view>
                     <navigationItem key="navigationItem" id="zNn-AC-gHb"/>
+                    <connections>
+                        <outlet property="radiusLabel" destination="TrR-kx-fRd" id="qUY-8E-L3V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OhV-RX-ivD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
