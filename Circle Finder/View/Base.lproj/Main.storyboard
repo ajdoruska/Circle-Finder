@@ -130,7 +130,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiO-2j-Knn">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiO-2j-Knn" customClass="goToResults">
                                 <rect key="frame" x="20" y="744" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,7 +145,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="calculateButtonPressed:" destination="h2i-Sl-OPH" eventType="touchUpInside" id="4Ti-1H-9Sh"/>
-                                    <segue destination="MFm-fK-Hsp" kind="show" identifier="goToResults" id="guu-ah-QHG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="IIF-pN-eAh">
@@ -196,7 +195,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TXr-pM-h1N"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calculate" id="7Ew-pu-MWs"/>
+                    <navigationItem key="navigationItem" title="Calculate" id="7Ew-pu-MWs">
+                        <barButtonItem key="backBarButtonItem" title="Recalculate" id="hNu-aQ-U9M"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="calculateButton" destination="SiO-2j-Knn" id="cRG-N3-AeZ"/>
                         <outlet property="length" destination="0T6-qR-rP2" id="PPw-Zk-eoI"/>
@@ -205,39 +206,113 @@
                         <outlet property="specificMeasurementScrollView" destination="Pi2-HA-aHe" id="g0X-UM-vem"/>
                         <outlet property="unitLabel" destination="TFP-bf-QJR" id="2da-H6-Htf"/>
                         <outlet property="warningLabel" destination="mVZ-iw-G2D" id="Egm-v1-JJM"/>
+                        <segue destination="JQW-zH-3x9" kind="show" identifier="goToResults" id="kUo-vO-5mg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyh-eq-xbZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3321.739130434783" y="137.94642857142856"/>
         </scene>
-        <!--Results View Controller-->
-        <scene sceneID="1nl-HT-Mn0">
+        <!--Results-->
+        <scene sceneID="UeK-Ju-SPY">
             <objects>
-                <viewController id="MFm-fK-Hsp" customClass="resultsViewController" customModule="Circle_Finder" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hdk-he-S2i">
+                <viewController id="JQW-zH-3x9" customClass="ResultsViewController_" customModule="Circle_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Heh-dE-SsR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrR-kx-fRd">
-                                <rect key="frame" x="73" y="190" width="216" height="129"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5t4-lk-icx">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="fCX-OI-RGA">
+                                <rect key="frame" x="55" y="143" width="133" height="320"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA8-jE-Ax6">
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diameter:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkw-3x-b8i">
+                                        <rect key="frame" x="0.0" y="92.5" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Circumference:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J18-ga-fcU">
+                                        <rect key="frame" x="0.0" y="185" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIi-cW-1Ed">
+                                        <rect key="frame" x="0.0" y="277.5" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="Jpp-HE-94R"/>
+                                    <constraint firstAttribute="width" constant="133" id="Tg8-Sa-NKx"/>
+                                    <constraint firstAttribute="width" secondItem="fCX-OI-RGA" secondAttribute="height" multiplier="133:320" id="Y0n-OD-izy"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="H9a-TF-aVS">
+                                <rect key="frame" x="226" y="143" width="133" height="320"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaF-jS-hCU">
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diameter:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuO-x6-8aK">
+                                        <rect key="frame" x="0.0" y="92.5" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Circumference:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doB-ZO-hzA">
+                                        <rect key="frame" x="0.0" y="185" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XkX-4u-fPf">
+                                        <rect key="frame" x="0.0" y="277.5" width="133" height="42.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="133" id="Ab5-3w-TsD"/>
+                                    <constraint firstAttribute="height" constant="320" id="uln-fb-gww"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="hG7-zW-Fhi"/>
+                        <constraints>
+                            <constraint firstItem="fCX-OI-RGA" firstAttribute="top" secondItem="E23-oP-41m" secondAttribute="top" constant="55" id="17Z-KH-ycQ"/>
+                            <constraint firstItem="H9a-TF-aVS" firstAttribute="top" secondItem="E23-oP-41m" secondAttribute="top" constant="55" id="98u-f3-glS"/>
+                            <constraint firstItem="E23-oP-41m" firstAttribute="trailing" secondItem="H9a-TF-aVS" secondAttribute="trailing" constant="55" id="Kwl-eB-MEH"/>
+                            <constraint firstItem="fCX-OI-RGA" firstAttribute="leading" secondItem="E23-oP-41m" secondAttribute="leading" constant="55" id="a3N-MZ-tjS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E23-oP-41m"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zNn-AC-gHb"/>
+                    <navigationItem key="navigationItem" title="Results" id="3qB-fO-XqB"/>
                     <connections>
-                        <outlet property="radiusLabel" destination="TrR-kx-fRd" id="qUY-8E-L3V"/>
+                        <outlet property="aLabel" destination="XkX-4u-fPf" id="QHI-zS-WSx"/>
+                        <outlet property="cLabel" destination="doB-ZO-hzA" id="6Uz-Bg-bCP"/>
+                        <outlet property="dLabel" destination="fuO-x6-8aK" id="LBA-lj-cPl"/>
+                        <outlet property="rLabel" destination="GaF-jS-hCU" id="CKT-9P-PuV"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OhV-RX-ivD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mEJ-Kn-cyp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4086.9565217391309" y="137.94642857142856"/>
+            <point key="canvasLocation" x="4156.521739130435" y="134.59821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="laO-cP-RLi">

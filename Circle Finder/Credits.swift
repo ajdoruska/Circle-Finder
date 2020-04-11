@@ -6,9 +6,8 @@
  
  (used ^^ cocoapod to implement the startup word scrolling animation)
  
- 
- 
- 
+
+
  
  Copyright (c) 2013-2017 Iftekhar Qurashi <-- IQKeyboardManagerSwift functionality
  https://github.com/hackiftekhar/IQKeyboardManager

@@ -10,5 +10,5 @@ target 'Circle Finder' do
 
 pod 'CLTypingLabel'
 pod 'IQKeyboardManagerSwift'
-
+pod 'RealmSwift'
 end

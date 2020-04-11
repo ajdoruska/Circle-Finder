@@ -2,16 +2,25 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import RealmSwift
+
+
+
+
+
+
 class CalculationViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    let realm = try! Realm()
     
-    //MARK: - Passed the results from the Calculations completed in CalculationLogistics
-    var result: Array <String>? //array of the answers to be passed
+    var updatedData : Results<AnswerDataBase>?
     
     //MARK: - Global Variables to be passed into Calculation Logistics
     var selectedMeasurement: String? // diameter, radius, circumference
     var selectedUnit: String? // unit of users choice
     var lengthmeasurement: Double? // finalMeasurement
+    
+    
     
     
     //MARK: - Local Variables
@@ -102,7 +111,6 @@ class CalculationViewController: UIViewController, UIPickerViewDataSource, UIPic
         
         //chunk of code checks to make sure length textfield is not nil
         if let value = Double(length.text!){
-            print(value)
             lengthmeasurement = value
             txtFieldNotNil = true
             
@@ -125,38 +133,67 @@ class CalculationViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
         formFilledChecker()
+        
+        
+        
+        
         if meetsGuidelines == true {
             //proceed with calculations
-            result = CalculationLogistics().performCalculations(length: lengthmeasurement!, measurement: selectedMeasurement!)
+            
+            let resultingCalculation = CalculationLogistics().performCalculations(length: lengthmeasurement!, measurement: selectedMeasurement!)
+            let newAnswers = AnswerDataBase()
+            newAnswers.radius = resultingCalculation[0]
+            newAnswers.diameter = resultingCalculation[1]
+            newAnswers.circumference = resultingCalculation[2]
+            newAnswers.area = resultingCalculation[3]
+            newAnswers.units = selectedMeasurement!
+            updatedData = realm.objects(AnswerDataBase.self)
+            self.saveData(answers: newAnswers)
+            
+            performSegue(withIdentifier: "goToResults", sender: self)
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
         }else {
             warningLabel.isHidden = false //warns user that form is not filled completely... try again!
         }
+        
+        
+        
+        
+        
+        
+        
     }
-    
-    //MARK: - segue data handling
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToResults" {
-            let destinationVC = segue.destination as! resultsViewController
-            
-             let answer = result?[0]
-                if answer != nil {
-                destinationVC.radiusLabel.text =  result?[0]
-                    print(answer!)
-            
-            }
-                else{
-                    print("failurrrrrreee")
+    func saveData(answers: AnswerDataBase) {
+        
+        do{
+            try! realm.write{
+                realm.deleteAll()
+                realm.add(answers)
+                
             }
         }
         
-    }
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        print("segue now moving")
+        
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResults"{
+            let destinationVC = segue.destination as! ResultsViewController_
+            destinationVC.answers = updatedData
+            destinationVC.units = selectedUnit
+            
+        }
+    }
 }
