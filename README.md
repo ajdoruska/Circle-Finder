@@ -1,8 +1,8 @@
 # Circle-Finder
-Ap Computer science private remote
+Ap Computer science project now available to public.
 
 
-In order to adhere to the guidelines, This create task has been kept private for only Mrs. O'loughin and Aidan D to see.
+Per the create task guidelines, releasing to public is now allowed since AP testing results were released over 1 year ago.
 
 
 To navigate to the form view controller that contains much of my personal code, direct yourself to the "controllers" folder and open the "CalculationViewController.swift".
